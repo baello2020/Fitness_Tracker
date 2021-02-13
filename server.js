@@ -13,7 +13,7 @@ const db = require("./models");
 
 const app = express();
 
-const databaseName = "workout_db"
+const databaseName = "orlando"
 
 app.use(logger("dev"));
 
@@ -24,7 +24,18 @@ app.use(express.static("public"));
 
 //Mongodb
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://xxxxxxx:xxxxxxx@xxxxxx.mlab.com:xxxxxx/heroku_xxxxxxxx", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log(`Successfully connected to database: ${databaseName}`))
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/orlando',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
+
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://xxxxxxx:xxxxxxx@xxxxxx.mlab.com:xxxxxx/heroku_xxxxxxxx", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log(`Successfully connected to database: ${databaseName}`))
 
 // Requiring our routes
 

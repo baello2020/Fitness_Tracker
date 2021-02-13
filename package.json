@@ -1,0 +1,28 @@
+{
+  "name": "Fitness_Tracker",
+  "version": "1.0.0",
+  "description": "- [Description](#Description) - [Installations](#Installations) - [Licence](#Licence) - [Run the app](#test) - [Contributing](#Contributing) - [Demo Video](#Project-Demo-Video) - [Credits](#Credits) - [Questions](#Questions)",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.16",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baello2020/Fitness_Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baello2020/Fitness_Tracker/issues"
+  },
+  "homepage": "https://github.com/baello2020/Fitness_Tracker#readme"
+}
