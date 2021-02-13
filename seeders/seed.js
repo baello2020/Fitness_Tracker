@@ -4,7 +4,7 @@
 let mongoose = require("mongoose");
 let db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://jamierachael:Cheeseme1@ds141924.mlab.com:41924/heroku_rp5k8lsz", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://orlandob:Password1@cluster0.wr3yf.mongodb.net/orlando?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true
