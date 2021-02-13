@@ -35,8 +35,6 @@ mongoose.connect(
   );
 
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://xxxxxxx:xxxxxxx@xxxxxx.mlab.com:xxxxxx/heroku_xxxxxxxx", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log(`Successfully connected to database: ${databaseName}`))
-
 // Requiring our routes
 
 app.use("/api", require("./routes/api-routes.js"));
