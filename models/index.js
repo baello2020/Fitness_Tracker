@@ -1,5 +1,4 @@
-// Orlando Baello - Homework 17
-
+// Orlando Baello - Homework 17 
 module.exports = {
-  Workout: require('./workout')
+  Workout: require("./Workout"),
 };

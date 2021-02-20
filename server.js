@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-// Set our middlewares for our app.
+// Set middlewares for our app.
 app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
