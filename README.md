@@ -43,4 +43,4 @@ please feel free to ask me any questions.
 * Baello2020@gmail.com
 
 ## Demo_Animation
-![Demo](https://github.com/baello2020/Fitness_Tracker/public/asset/Gif.gif "Demo")
+![Demo](https://github.com/baello2020/Fitness_Tracker/blob/main/public/assets/Gif.gif "Demo")
