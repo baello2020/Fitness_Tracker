@@ -29,7 +29,7 @@ A work in progress. And the possibilities are endless. <br> Please feel free to 
 
 
 ## Project Live Demo
-https://www.youtube.com/watch?v=-2Y85HQMijc&feature=youtu.be&ab_channel=OrlandoB
+https://shielded-castle-38792.herokuapp.com/
 
 ## Credits
 Hat tip to UW / Trilogy instructor, TAs and staffs.
