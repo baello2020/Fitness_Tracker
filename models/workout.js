@@ -1,63 +1,48 @@
-// Orlando Baello - Homework 17
-// Fitness Tracker
-
+// Orlando Baello - Homework 17 
+// setup
 const mongoose = require("mongoose");
-
+mongoose.set("debug", true);
+// mongoose declared
 const Schema = mongoose.Schema;
 
-const workoutSchema = new Schema(
+// Workout schema
+const WorkoutSchema = new Schema(
   {
     day: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     exercises: [
       {
         type: {
           type: String,
-          trim: true,
-          required: "Enter an exercise type"
+          required: [true, "This exercise needs a type."],
         },
         name: {
           type: String,
-          trim: true,
-          required: "Enter an exercise name"
+          required: [true, "This exercise needs a name."],
         },
-        duration: {
-          type: Number,
-          required: "Enter an exercise duration in minutes"
-        },
-        weight: {
-          type: Number
-        },
-        reps: {
-          type: Number
-        },
-        sets: {
-          type: Number
-        },
-        distance: {
-          type: Number
-        }
-      }
-    ]
+        duration: Number,
+        weight: Number,
+        reps: Number,
+        sets: Number,
+        distance: Number,
+      },
+    ],
   },
   {
     toJSON: {
-      // include any virtual properties when data is requested
-      virtuals: true
-    }
+      virtuals: true,
+    },
   }
 );
 
-// adds a dynamically-created property to schema
-workoutSchema.virtual("totalDuration").get(function () {
-  // "reduce" array of exercises down to just the sum of their durations
-  return this.exercises.reduce((total, exercise) => {
-    return total + exercise.duration;
+WorkoutSchema.virtual("totalDuration").get(function () {
+  return this.exercises.reduce((acc, exercise) => {
+    return acc + exercise.duration;
   }, 0);
 });
 
-const Workout = mongoose.model("Workout", workoutSchema);
+const Workout = mongoose.model("Workout", WorkoutSchema);
 
 module.exports = Workout;
