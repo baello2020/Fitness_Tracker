@@ -1,5 +1,5 @@
 // Orlando Baello - Homework 17
-// REQUIRE our necessary packages.
+// required packages.
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
