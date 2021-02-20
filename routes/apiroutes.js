@@ -3,7 +3,7 @@
 const { Workout } = require("../models");
 
 module.exports = (app) => {
-  // pulling all Route workouts DB.
+  // pull Route workouts DB.
   app.get("/api/workouts", async (req, res) => {
     const workouts = await Workout.find();
     console.log(workouts);
@@ -14,7 +14,7 @@ module.exports = (app) => {
     }
   });
 
-  // creating a Route workout.
+  // Route workout creation
   app.post("/api/workouts", async ({ body }, res) => {
     const newWorkout = await Workout.create(body);
     try {
@@ -24,7 +24,7 @@ module.exports = (app) => {
     }
   });
 
-  // updating a Route workout.
+  // Route workout updates.
   app.put("/api/workouts/:id", async (req, res) => {
     const updateWorkout = await Workout.findByIdAndUpdate(req.params.id, {
       $push: {

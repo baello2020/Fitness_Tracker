@@ -4,22 +4,22 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-// Require our model
+// Required model
 require("./models");
 
-// Declare our PORT and app.
+// port & app.
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-// Set middlewares for our app.
+// middlewares
 app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Connect to Mongoose.
+// Mongoose connection
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/workout",
   {
@@ -30,11 +30,11 @@ mongoose.connect(
   }
 );
 
-// REQUIRE our HTML and API routes.
-require("./routes/htmlRoutes")(app);
-require("./routes/apiRoutes.js")(app);
+// required HTML & API routes.
+require("./routes/htmlroutes")(app);
+require("./routes/apiroutes.js")(app);
 
-// Listen to our server.
+// server listener
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);
 });
