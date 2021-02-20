@@ -1,78 +1,66 @@
 // Orlando Baello - Homework 17
-// Fitness Tracker
 
+const { Workout } = require("../models");
 
-const router = require('express').Router();
-const db = require("../models");
+module.exports = (app) => {
+  // pulling all Route workouts DB.
+  app.get("/api/workouts", async (req, res) => {
+    const workouts = await Workout.find();
+    console.log(workouts);
+    try {
+      res.json(workouts);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  });
 
-// Works! 
-// router.get('/test', (req, res) => res.json('Sample API get endpoint'));
+  // creating a Route workout.
+  app.post("/api/workouts", async ({ body }, res) => {
+    const newWorkout = await Workout.create(body);
+    try {
+      res.status(200).json(newWorkout);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  });
 
+  // updating a Route workout.
+  app.put("/api/workouts/:id", async (req, res) => {
+    const updateWorkout = await Workout.findByIdAndUpdate(req.params.id, {
+      $push: {
+        exercises: req.body,
+      },
+    });
+    try {
+      res.status(200).json(updateWorkout);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  });
 
-// getLastWorkout() GET /api/workouts
+  app.get("/api/workouts/range", async (req, res) => {
+    
+    const today = new Date;
+    const startOfWeek = today.getDate() - today.getDay();
+    const endOfWeek = startOfWeek + 6;
+    const beginningRange = new Date(today.setDate(startOfWeek));
+    const endRange = new Date(today.setDate(endOfWeek));
 
-router.get("/workouts", (req, res) => {
-    db.Workout.find({})
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
+    console.log(beginningRange, endRange)
 
-// addExercise PUT /api/workouts/ 
+    const range = await Workout.find({
+      day: {
+        $gte: beginningRange,
+        $lte: endRange,
+      },
+    });
 
-router.put("/workouts/:id", ({ params, body }, res) => {
-    console.log(body);
-    db.Workout.findByIdAndUpdate(
-        params.id,
-        {
-            $push: {
-                exercises: body,
+    
 
-            },
-        },
-        {
-            new: true,
-            runValidators: true
-        }
-    )
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
-
-// createWorkout POST /api/workouts
-
-router.post("/workouts", ({ body }, res) => {
-    console.log(body);
-    db.Workout.create({})
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-
-    res.send('Got a POST request')
-});
-
-// getWorkoutsInRange() GET /api/workouts/range
-
-router.get("/workouts/range", (req, res) => {
-    db.Workout.find({}).limit(7)
-        .then(dbWorkout => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            res.json(err);
-        });
-});
-
-
-
-module.exports = router;
+    try {
+      res.status(200).json(range);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  });
+};
