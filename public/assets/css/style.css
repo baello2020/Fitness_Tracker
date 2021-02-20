@@ -1,5 +1,5 @@
 /* Orlando Baello - Homework 17 */
-/* Fitness Tracker */
+
 
 *,
 *::before,
@@ -34,6 +34,10 @@ a:active,
 a:visited {
   text-decoration: none;
   color: inherit;
+}
+
+nav a:hover{
+  opacity: 0.7;
 }
 
 header {
@@ -133,7 +137,7 @@ form::after {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .exercise .ui.card {
