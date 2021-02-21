@@ -30,7 +30,7 @@ A work in progress. And the possibilities are endless. <br> Please feel free to 
 
 
 ## Project Live Demo
-https://salty-castle-92161.herokuapp.com/stats
+https://shielded-castle-38792.herokuapp.com/
 
 ## Credits
 Hat tip to UW / Trilogy instructor, TAs and staffs.
